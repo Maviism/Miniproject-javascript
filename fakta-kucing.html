@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fakta Kucing Acak</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+        .container {
+            text-align: center;
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            max-width: 400px;
+            width: 100%;
+        }
+        h1 {
+            color: #333;
+        }
+        #fact {
+            margin: 20px 0;
+            font-style: italic;
+            color: #555;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Fakta Kucing Acak</h1>
+        <p id="fact">Klik tombol di bawah untuk mendapatkan fakta tentang kucing!</p>
+        <button onclick="getFact()">Dapatkan Fakta Baru</button>
+    </div>
+
+    <script>
+        function getFact() {
+            fetch('https://catfact.ninja/fact')
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('fact').innerText = data.fact;
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    document.getElementById('fact').innerText = 'Maaf, terjadi kesalahan saat mengambil fakta.';
+                });
+        }
+    </script>
+</body>
+</html>

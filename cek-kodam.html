@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cek Kodam Lucu</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        h1 {
+            color: #333;
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            box-sizing: border-box;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        #result {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Cek Kodam</h1>
+        <input type="text" id="nameInput" placeholder="Masukkan nama lengkap">
+        <button onclick="checkKodam()">Cek Kodam</button>
+        <div id="result"></div>
+    </div>
+
+    <script src="data.js"></script>
+    <script>
+        function checkKodam() {
+            const name = document.getElementById('nameInput').value.trim();
+            const resultDiv = document.getElementById('result');
+
+            if (name === '') {
+                resultDiv.textContent = 'Silakan masukkan nama terlebih dahulu.';
+                return;
+            }
+
+            const randomKodamIndex = Math.floor(Math.random() * kodams.length);
+            const selectedKodam = kodams[randomKodamIndex];
+
+            const randomAdjIndex = Math.floor(Math.random() * adjectives.length);
+            const randomAdj = adjectives[randomAdjIndex];
+
+            resultDiv.textContent = `${name}, Kodam Lucumu adalah: ${selectedKodam} ${randomAdj}`;
+        }
+    </script>
+</body>
+</html>
